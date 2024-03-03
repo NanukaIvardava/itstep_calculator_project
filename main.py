@@ -38,3 +38,47 @@ def get_input():
             print("❌ Invalid input ❌ Please enter a valid number.")
 
     return num1, operation, num2
+# Main function to handle the calculation.
+def calculate():
+
+    # Creating an instance of the Calculator class.
+    calculator = Calculator()
+
+    while True:
+        # Get user input for the calculation.
+        num1, operation, num2 = get_input()
+
+        if operation in ['+', '-', '*', '/']:
+            # Performing the  operation based on user input.
+            if operation == '+':
+                result = calculator.add(num1, num2)
+            elif operation == '-':
+                result = calculator.subtract(num1, num2)
+            elif operation == '*':
+                result = calculator.multiply(num1, num2)
+            elif operation == '/':
+                result = calculator.divide(num1, num2)
+
+            # Display the result of the calculation.
+            print(f"✅ Result: {result}")
+        else:
+            # Display an error message for invalid operations.
+            print("❌ Invalid operation ❌ Please enter a valid operation (+, -, *, /).")
+
+         # Ask the user if they want to perform another calculation.
+        recalculate = input("🔄 Do you want to do another calculation? (y/n): ").lower()
+
+        if recalculate == 'y':
+            # If yes, continue with another calculation.
+            continue
+        elif recalculate == 'n':
+            # If no, display a shutdown message and exit the loop.
+            print('💤 Shutting down the program...')
+            break
+        else:
+            # Display an error message for invalid input and stop the program.
+            print('❌ Invalid input ❌ Stopping the program...')
+            break
+
+# Start the calculation process.
+calculate()
